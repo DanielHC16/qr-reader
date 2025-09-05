@@ -8,13 +8,13 @@ function App() {
 
   useEffect(() => {
     const scanner = new Html5QrcodeScanner('reader', {
-      qrbox: {
-        width: 300,
-        height: 300,
-      },
-      fps: 10,
-    });
+      fps: 10, // reasonable frame rate for webcams
+      qrbox: { width: 250, height: 250 }, // slightly smaller box for typical webcam view
+      aspectRatio: 1.333, // 4:3 aspect ratio matches most webcams
+      
+    }, false);
 
+    
   scanner.render(success, error);
 
   function success(result){
